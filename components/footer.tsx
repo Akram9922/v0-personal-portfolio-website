@@ -16,7 +16,7 @@ export function Footer() {
             © Akram — Built onchain
           </p>
           <p className="text-xs text-muted-foreground/60 mt-2">
-            Crafted with framer-motion and Three.js
+            Crafted with Next.js and framer-motion
           </p>
         </motion.div>
       </div>

@@ -4,8 +4,8 @@ import { Geist, Geist_Mono } from 'next/font/google'
 
 import './globals.css'
 
-const _geist = Geist({ subsets: ['latin'] })
-const _geistMono = Geist_Mono({ subsets: ['latin'] })
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' })
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
   title: 'Akram - Onchain Explorer',
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   )
