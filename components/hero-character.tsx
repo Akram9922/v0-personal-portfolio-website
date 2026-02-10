@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { PerspectiveCamera } from '@react-three/drei'
 import * as THREE from 'three'
@@ -9,12 +9,12 @@ function AnimatedCharacter() {
   const groupRef = useRef<THREE.Group>(null)
   const legsRef = useRef<THREE.Group>(null)
 
-  useFrame(() => {
+  useFrame(({ clock }) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += 0.005
+      groupRef.current.rotation.y = clock.getElapsedTime() * 0.5
     }
     if (legsRef.current) {
-      legsRef.current.rotation.z = Math.sin(Date.now() * 0.003) * 0.3
+      legsRef.current.rotation.z = Math.sin(clock.getElapsedTime() * 2) * 0.3
     }
   })
 
