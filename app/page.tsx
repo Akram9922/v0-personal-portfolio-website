@@ -2,211 +2,247 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import Link from 'next/link'
 
 export default function Page() {
+  const floatVariants = {
+    animate: {
+      y: [0, -30, 0],
+      x: [0, 20, -20, 0],
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    },
+  }
+
+  const bounceVariants = {
+    animate: {
+      y: [0, -40, 0],
+      transition: {
+        duration: 2,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    },
+  }
+
   return (
     <div className="bg-background text-foreground min-h-screen">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border py-4 px-4">
-        <div className="max-w-4xl mx-auto flex justify-between items-center">
+      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border py-3 px-4">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-2xl font-bold text-primary"
+            className="text-xl font-bold text-primary"
           >
             akram ⚡️
           </motion.div>
-          <div className="flex gap-6 text-sm">
-            <a href="#about" className="hover:text-primary transition">about</a>
-            <a href="#hobbies" className="hover:text-primary transition">hobbies</a>
-            <a href="#socials" className="hover:text-primary transition">socials</a>
+          <div className="flex gap-4 text-xs md:text-sm">
+            <a href="#socials" className="hover:text-primary transition">Twitter</a>
+            <a href="#socials" className="hover:text-primary transition">Telegram</a>
+            <a href="#socials" className="hover:text-primary transition">GitHub</a>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section id="about" className="min-h-screen flex items-center justify-center px-4 py-20">
-        <div className="max-w-4xl mx-auto w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left: Portrait */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="relative h-80 md:h-96 rounded-2xl overflow-hidden border-4 border-primary"
-            >
-              <Image
-                src="/akram-portrait.jpg"
-                alt="Akram"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
+      <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto w-full">
+          {/* Decorative floating elements */}
+          <motion.div
+            variants={floatVariants}
+            animate="animate"
+            className="absolute top-10 right-10 text-6xl opacity-30"
+          >
+            ⚡
+          </motion.div>
+          <motion.div
+            variants={floatVariants}
+            animate="animate"
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="absolute bottom-20 left-5 text-6xl opacity-30"
+          >
+            🧑‍🌾
+          </motion.div>
 
-            {/* Right: Bio */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left: Text Content */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-6"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6 order-2 md:order-1"
             >
               <div>
-                <p className="text-5xl font-bold mb-2">i am akram⚡️</p>
-                <p className="text-xl text-muted-foreground">a legendary onchain explorer</p>
-              </div>
-
-              <div className="space-y-4 text-lg leading-relaxed">
-                <p>
-                  building on <span className="font-bold text-primary">base</span>. content creator. mini-app builder. research enthusiast.
-                </p>
-                <p>
-                  deep diving into blockchain data. exploring the web3 ecosystem. sometimes i trade.
-                </p>
-                <p className="text-muted-foreground text-base">
-                  hanging out with familia. a lot of travelling. discovering new things.
+                <h1 className="text-6xl md:text-7xl font-black mb-2">
+                  i am <span className="text-primary">akram</span>⚡️
+                </h1>
+                <p className="text-xl md:text-2xl text-muted-foreground font-medium">
+                  a legendary onchain explorer
                 </p>
               </div>
 
-              <div className="pt-4">
-                <p className="text-2xl font-bold mb-2">my hobbies</p>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>⚡ Building cool stuff</li>
-                  <li>🎮 Gaming & exploring</li>
-                  <li>📱 Creating content</li>
-                  <li>🌍 Traveling the world</li>
-                </ul>
+              <p className="text-lg leading-relaxed max-w-md">
+                known for <span className="font-bold">building on base</span> and exploring the blockchain. a content creator. mini-app builder. research enthusiast.
+              </p>
+
+              <div className="space-y-3 text-sm md:text-base text-muted-foreground">
+                <p>⚡ sometimes i trade</p>
+                <p>👨‍🌾 hanging out with familia</p>
+                <p>✈️ a lot of travelling</p>
               </div>
+            </motion.div>
+
+            {/* Right: Animated Character */}
+            <motion.div
+              variants={floatVariants}
+              animate="animate"
+              initial={{ opacity: 0, scale: 0.8 }}
+              className="relative h-96 md:h-full min-h-96 order-1 md:order-2 flex items-center justify-center"
+            >
+              <Image
+                src="/frog-character.jpg"
+                alt="Akram Frog Character"
+                width={400}
+                height={400}
+                className="object-contain drop-shadow-2xl"
+              />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Hobbies Section */}
-      <section id="hobbies" className="py-20 px-4 bg-secondary/30">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl font-bold mb-12"
-          >
-            my hobbies
-          </motion.h2>
+      {/* My Hobbies Section */}
+      <section className="py-20 px-4 max-w-6xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-5xl font-black mb-12"
+        >
+          my hobbies
+        </motion.h2>
 
-          <div className="space-y-8">
-            {[
-              {
-                title: 'onchain explorer',
-                desc: 'deep dive into blockchain data. analyzing trends. uncovering insights. base is my home.'
-              },
-              {
-                title: 'content creator',
-                desc: 'sharing web3 knowledge. building community. creating videos. writing threads. making memes.'
-              },
-              {
-                title: 'mini-app builder',
-                desc: 'developing dApps. building tools. experimenting on base. shipping fast.'
-              },
-              {
-                title: 'research & airdrop hunting',
-                desc: 'investigating emerging protocols. finding opportunities. researching tokenomics. finding gems.'
-              }
-            ].map((hobby, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group cursor-pointer"
-              >
-                <div className="border-b border-border pb-6 group-hover:border-primary transition-colors">
-                  <h3 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition">
-                    {hobby.title}
-                  </h3>
-                  <p className="text-lg text-muted-foreground">{hobby.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="space-y-8">
+          {[
+            'onchain explorer - deep dive into blockchain data. analyzing trends.',
+            'content creator - sharing web3 knowledge. building community.',
+            'mini-app builder - developing dApps. building tools on base.',
+            'research & airdrop hunting - finding emerging opportunities.'
+          ].map((hobby, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="text-2xl font-bold border-b-2 border-border pb-6 hover:border-primary transition-colors"
+            >
+              {hobby}
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Live In Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <p className="text-2xl font-bold">and we all live in..........</p>
-            <p className="text-5xl font-bold text-primary">🔗 THE BLOCKCHAIN 🔗</p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Socials Section */}
-      <section id="socials" className="py-20 px-4 bg-secondary/30">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl font-bold mb-12 text-center"
-          >
-            find me on
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { name: 'Twitter', emoji: '𝕏', url: '#' },
-              { name: 'Telegram', emoji: '📱', url: '#' },
-              { name: 'GitHub', emoji: '👨‍💻', url: '#' },
-              { name: 'Base Profile', emoji: '⚡️', url: '#' }
-            ].map((social, i) => (
-              <motion.a
-                key={i}
-                href={social.url}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group p-6 bg-card border-2 border-border rounded-xl hover:border-primary hover:bg-primary/5 transition-all cursor-pointer"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="text-3xl">{social.emoji}</span>
-                  <span className="text-xl font-semibold group-hover:text-primary transition">
-                    {social.name}
-                  </span>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Fun Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      {/* We All Live In Section */}
+      <section className="py-20 px-4 text-center relative">
+        <div className="max-w-6xl mx-auto">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-bold"
+            className="text-3xl md:text-4xl font-bold mb-8"
           >
-            life is short. build cool stuff. have fun. repeat.
+            and we all live in..........
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl"
+            className="text-6xl md:text-7xl font-black text-primary mb-12"
           >
-            bye love you 💙
+            THE BLOCKCHAIN
           </motion.p>
+
+          {/* Animated decorative elements */}
+          <div className="flex justify-center gap-8 flex-wrap">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+              className="text-5xl"
+            >
+              ⚡
+            </motion.div>
+            <motion.div
+              variants={bounceVariants}
+              animate="animate"
+              className="text-5xl"
+            >
+              🔗
+            </motion.div>
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
+              className="text-5xl"
+            >
+              ⚡
+            </motion.div>
+          </div>
         </div>
+      </section>
+
+      {/* Find Me On Section */}
+      <section id="socials" className="py-20 px-4 max-w-6xl mx-auto">
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-5xl font-black mb-12 text-center"
+        >
+          find me on x
+        </motion.h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            { name: 'Twitter', url: '#' },
+            { name: 'Telegram', url: '#' },
+            { name: 'GitHub', url: '#' },
+            { name: 'Base Profile', url: '#' }
+          ].map((social, i) => (
+            <motion.a
+              key={i}
+              href={social.url}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="group p-8 bg-card border-2 border-border rounded-xl hover:border-primary hover:bg-primary/5 transition-all cursor-pointer"
+            >
+              <span className="text-2xl font-bold group-hover:text-primary transition">
+                {social.name}
+              </span>
+            </motion.a>
+          ))}
+        </div>
+      </section>
+
+      {/* Closing Section */}
+      <section className="py-20 px-4 text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="space-y-8 max-w-4xl mx-auto"
+        >
+          <p className="text-4xl md:text-5xl font-black">
+            bye love you 💙
+          </p>
+        </motion.div>
       </section>
 
       {/* Footer */}
