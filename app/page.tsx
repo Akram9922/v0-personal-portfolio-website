@@ -119,7 +119,7 @@ export default function Page() {
       </section>
 
       {/* My Hobbies Section */}
-      <section className="py-20 px-4 max-w-6xl mx-auto relative">
+      <section className="py-20 px-4 max-w-6xl mx-auto relative pt-24">
         {/* Animated Pepe sitting on top */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -133,12 +133,12 @@ export default function Page() {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="flex justify-center mb-6"
+          className="absolute left-1/2 -top-12 -translate-x-1/2"
         >
           <img
             src="https://media.tenor.com/7RvXaJ_mJ6gAAAAC/pepe-transparent-toilet.gif"
             alt="Pepe sitting"
-            className="h-24 w-auto"
+            className="h-32 w-auto drop-shadow-lg"
           />
         </motion.div>
 
