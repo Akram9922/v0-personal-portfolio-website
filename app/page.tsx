@@ -133,12 +133,16 @@ export default function Page() {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute left-1/2 -top-12 -translate-x-1/2"
+          className="absolute left-1/2 -top-12 -translate-x-1/2 z-10"
         >
-          <img
-            src="https://media.tenor.com/7RvXaJ_mJ6gAAAAC/pepe-transparent-toilet.gif"
+          <video
+            src="/images/animation.mp4"
             alt="Pepe sitting"
             className="h-32 w-auto drop-shadow-lg"
+            autoPlay
+            loop
+            muted
+            playsInline
           />
         </motion.div>
 
