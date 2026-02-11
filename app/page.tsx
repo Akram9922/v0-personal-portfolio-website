@@ -149,72 +149,18 @@ export default function Page() {
             ))}
           </div>
 
-          {/* Animated Frog Character */}
+          {/* Animated Pepe Character */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             className="lg:col-span-1 flex justify-center lg:justify-end"
           >
-            <svg
-              width="250"
-              height="300"
-              viewBox="0 0 250 300"
-              className="drop-shadow-2xl"
-            >
-              <defs>
-                <style>{`
-                  @keyframes kickLeft {
-                    0%, 100% { transform: rotate(0deg); }
-                    50% { transform: rotate(-25deg); }
-                  }
-                  @keyframes kickRight {
-                    0%, 100% { transform: rotate(0deg); }
-                    50% { transform: rotate(25deg); }
-                  }
-                  .left-leg { animation: kickLeft 1.5s ease-in-out infinite; transform-origin: 90px 180px; }
-                  .right-leg { animation: kickRight 1.5s ease-in-out infinite 0.3s; transform-origin: 160px 180px; }
-                  @keyframes headBob {
-                    0%, 100% { transform: translateY(0); }
-                    50% { transform: translateY(-10px); }
-                  }
-                  .frog-head { animation: headBob 1.5s ease-in-out infinite; }
-                `}</style>
-              </defs>
-
-              {/* Body */}
-              <ellipse cx="125" cy="140" rx="70" ry="80" fill="#6DD5ED" opacity="0.9" />
-              
-              {/* Head */}
-              <g className="frog-head">
-                <circle cx="125" cy="50" r="45" fill="#6DD5ED" />
-                {/* Eyes */}
-                <circle cx="105" cy="35" r="12" fill="#FFF" />
-                <circle cx="145" cy="35" r="12" fill="#FFF" />
-                <circle cx="105" cy="35" r="7" fill="#000" />
-                <circle cx="145" cy="35" r="7" fill="#000" />
-                {/* Mouth */}
-                <path d="M 110 55 Q 125 65 140 55" stroke="#000" strokeWidth="2" fill="none" />
-              </g>
-
-              {/* Left Arm */}
-              <ellipse cx="70" cy="130" rx="15" ry="40" fill="#6DD5ED" opacity="0.8" />
-              
-              {/* Right Arm */}
-              <ellipse cx="180" cy="130" rx="15" ry="40" fill="#6DD5ED" opacity="0.8" />
-
-              {/* Left Leg */}
-              <g className="left-leg">
-                <ellipse cx="90" cy="200" rx="18" ry="50" fill="#5BC9E1" opacity="0.9" />
-                <ellipse cx="75" cy="240" rx="22" ry="25" fill="#5BC9E1" opacity="0.8" />
-              </g>
-
-              {/* Right Leg */}
-              <g className="right-leg">
-                <ellipse cx="160" cy="200" rx="18" ry="50" fill="#5BC9E1" opacity="0.9" />
-                <ellipse cx="175" cy="240" rx="22" ry="25" fill="#5BC9E1" opacity="0.8" />
-              </g>
-            </svg>
+            <img
+              src="https://media.tenor.com/7RvXaJ_mJ6gAAAAC/pepe-transparent-toilet.gif"
+              alt="Pepe on toilet"
+              className="w-64 h-auto drop-shadow-2xl"
+            />
           </motion.div>
         </div>
       </section>
