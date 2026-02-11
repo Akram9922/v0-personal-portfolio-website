@@ -120,48 +120,54 @@ export default function Page() {
 
       {/* My Hobbies Section */}
       <section className="py-20 px-4 max-w-6xl mx-auto relative">
+        {/* Animated Pepe sitting on top */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          animate={{
+            y: [0, -8, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="flex justify-center mb-6"
+        >
+          <img
+            src="https://media.tenor.com/7RvXaJ_mJ6gAAAAC/pepe-transparent-toilet.gif"
+            alt="Pepe sitting"
+            className="h-24 w-auto"
+          />
+        </motion.div>
+
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="text-5xl font-black mb-12"
+          className="text-5xl font-black mb-12 text-center"
         >
           my hobbies
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          <div className="lg:col-span-2 space-y-8">
-            {[
-              'onchain explorer - deep dive into blockchain data. analyzing trends.',
-              'content creator - sharing web3 knowledge. building community.',
-              'mini-app builder - developing dApps. building tools on base.',
-              'research & airdrop hunting - finding emerging opportunities.'
-            ].map((hobby, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="text-2xl font-bold border-b-2 border-border pb-6 hover:border-primary transition-colors"
-              >
-                {hobby}
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Animated Pepe Character */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-1 flex justify-center lg:justify-end"
-          >
-            <img
-              src="https://media.tenor.com/7RvXaJ_mJ6gAAAAC/pepe-transparent-toilet.gif"
-              alt="Pepe on toilet"
-              className="w-64 h-auto drop-shadow-2xl"
-            />
-          </motion.div>
+        <div className="max-w-3xl mx-auto space-y-8">
+          {[
+            'onchain explorer - deep dive into blockchain data. analyzing trends.',
+            'content creator - sharing web3 knowledge. building community.',
+            'mini-app builder - developing dApps. building tools on base.',
+            'research & airdrop hunting - finding emerging opportunities.'
+          ].map((hobby, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="text-2xl font-bold border-b-2 border-border pb-6 hover:border-primary transition-colors"
+            >
+              {hobby}
+            </motion.div>
+          ))}
         </div>
       </section>
 
