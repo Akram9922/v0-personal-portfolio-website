@@ -2,55 +2,39 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Page() {
   return (
-    <div className="bg-background text-foreground overflow-hidden">
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          {/* Left: Text Content */}
+    <div className="bg-background text-foreground min-h-screen">
+      {/* Navigation */}
+      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border py-4 px-4">
+        <div className="max-w-4xl mx-auto flex justify-between items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-2xl font-bold text-primary"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-balance">
-              Hey, I'm <span className="text-primary">Akram</span>
-            </h1>
-            <p className="text-lg text-muted-foreground mb-4">
-              Onchain explorer building on Base. I create content, develop mini-apps, and explore the Web3 ecosystem.
-            </p>
-            <p className="text-sm text-muted-foreground/70 mb-8">
-              Passionate about blockchain, creativity, and building products that matter.
-            </p>
-            <div className="flex gap-4">
-              <button className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
-                View My Work
-              </button>
-              <button className="px-6 py-2 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-colors">
-                Connect
-              </button>
-            </div>
+            akram ⚡️
           </motion.div>
+          <div className="flex gap-6 text-sm">
+            <a href="#about" className="hover:text-primary transition">about</a>
+            <a href="#hobbies" className="hover:text-primary transition">hobbies</a>
+            <a href="#socials" className="hover:text-primary transition">socials</a>
+          </div>
+        </div>
+      </nav>
 
-          {/* Right: Portrait */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative h-96 md:h-full min-h-96"
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-accent/30 rounded-2xl blur-2xl opacity-60" />
+      {/* Hero Section */}
+      <section id="about" className="min-h-screen flex items-center justify-center px-4 py-20">
+        <div className="max-w-4xl mx-auto w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Left: Portrait */}
             <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="relative h-full rounded-2xl overflow-hidden border border-primary/20"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative h-80 md:h-96 rounded-2xl overflow-hidden border-4 border-primary"
             >
               <Image
                 src="/akram-portrait.jpg"
@@ -59,98 +43,112 @@ export default function Page() {
                 className="object-cover"
               />
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Skills Section */}
-      <section className="py-20 px-4 bg-card/50">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl font-bold mb-12 text-center"
-          >
-            What I Do
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                title: 'Multichain Explorer',
-                desc: 'Deep dive into blockchain data, analyze trends, and uncover onchain insights across networks.'
-              },
-              {
-                title: 'Content Creator',
-                desc: 'Share Web3 knowledge through engaging content and educational materials.'
-              },
-              {
-                title: 'Mini-App Builder',
-                desc: 'Develop innovative dApps and tools on Base and other blockchains.'
-              },
-              {
-                title: 'Research & Analysis',
-                desc: 'Investigate airdrop opportunities and emerging protocols in the Web3 space.'
-              }
-            ].map((skill, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="p-6 bg-background border border-primary/20 rounded-lg hover:border-primary/50 transition-colors"
-              >
-                <h3 className="text-xl font-semibold mb-2 text-primary">{skill.title}</h3>
-                <p className="text-muted-foreground">{skill.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+            {/* Right: Bio */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-6"
+            >
+              <div>
+                <p className="text-5xl font-bold mb-2">i am akram⚡️</p>
+                <p className="text-xl text-muted-foreground">a legendary onchain explorer</p>
+              </div>
 
-      {/* Projects Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl font-bold mb-12 text-center"
-          >
-            Featured Projects
-          </motion.h2>
-          <div className="space-y-6">
-            {[
-              {
-                name: 'Base Analytics Dashboard',
-                desc: 'Real-time monitoring and analysis of Base network activity with interactive charts.'
-              },
-              {
-                name: 'Farcaster Mini-Apps',
-                desc: 'Innovative tools and applications built for the Farcaster ecosystem.'
-              },
-              {
-                name: 'Airdrop Research Platform',
-                desc: 'Comprehensive research and tracking tool for emerging airdrops and token distributions.'
-              }
-            ].map((project, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="p-6 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-lg hover:border-primary/50 transition-all cursor-pointer hover:shadow-lg hover:shadow-primary/20"
-              >
-                <h3 className="text-2xl font-semibold mb-2">{project.name}</h3>
-                <p className="text-muted-foreground">{project.desc}</p>
-              </motion.div>
-            ))}
+              <div className="space-y-4 text-lg leading-relaxed">
+                <p>
+                  building on <span className="font-bold text-primary">base</span>. content creator. mini-app builder. research enthusiast.
+                </p>
+                <p>
+                  deep diving into blockchain data. exploring the web3 ecosystem. sometimes i trade.
+                </p>
+                <p className="text-muted-foreground text-base">
+                  hanging out with familia. a lot of travelling. discovering new things.
+                </p>
+              </div>
+
+              <div className="pt-4">
+                <p className="text-2xl font-bold mb-2">my hobbies</p>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li>⚡ Building cool stuff</li>
+                  <li>🎮 Gaming & exploring</li>
+                  <li>📱 Creating content</li>
+                  <li>🌍 Traveling the world</li>
+                </ul>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Hobbies Section */}
-      <section className="py-20 px-4 bg-card/50">
+      <section id="hobbies" className="py-20 px-4 bg-secondary/30">
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl font-bold mb-12"
+          >
+            my hobbies
+          </motion.h2>
+
+          <div className="space-y-8">
+            {[
+              {
+                title: 'onchain explorer',
+                desc: 'deep dive into blockchain data. analyzing trends. uncovering insights. base is my home.'
+              },
+              {
+                title: 'content creator',
+                desc: 'sharing web3 knowledge. building community. creating videos. writing threads. making memes.'
+              },
+              {
+                title: 'mini-app builder',
+                desc: 'developing dApps. building tools. experimenting on base. shipping fast.'
+              },
+              {
+                title: 'research & airdrop hunting',
+                desc: 'investigating emerging protocols. finding opportunities. researching tokenomics. finding gems.'
+              }
+            ].map((hobby, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="group cursor-pointer"
+              >
+                <div className="border-b border-border pb-6 group-hover:border-primary transition-colors">
+                  <h3 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition">
+                    {hobby.title}
+                  </h3>
+                  <p className="text-lg text-muted-foreground">{hobby.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Live In Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <p className="text-2xl font-bold">and we all live in..........</p>
+            <p className="text-5xl font-bold text-primary">🔗 THE BLOCKCHAIN 🔗</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Socials Section */}
+      <section id="socials" className="py-20 px-4 bg-secondary/30">
         <div className="max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -158,66 +156,62 @@ export default function Page() {
             transition={{ duration: 0.6 }}
             className="text-4xl font-bold mb-12 text-center"
           >
-            Beyond Code
+            find me on
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { emoji: '🎮', title: 'Gaming', desc: 'Exploring virtual worlds and competitive gaming' },
-              { emoji: '🎵', title: 'Music', desc: 'Discovering new sounds and music production' },
-              { emoji: '🎨', title: 'Design', desc: 'Creating visual art and UI/UX experiments' }
-            ].map((hobby, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="p-8 text-center bg-background border border-primary/20 rounded-lg hover:border-primary/50 transition-colors"
-              >
-                <div className="text-5xl mb-4">{hobby.emoji}</div>
-                <h3 className="text-xl font-semibold mb-2">{hobby.title}</h3>
-                <p className="text-sm text-muted-foreground">{hobby.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Contact Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-2xl mx-auto text-center">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl font-bold mb-8"
-          >
-            Let's Connect
-          </motion.h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { label: 'X (Twitter)', url: '#' },
-              { label: 'Telegram', url: '#' },
-              { label: 'GitHub', url: '#' },
-              { label: 'Base Profile', url: '#' }
-            ].map((link, i) => (
+              { name: 'Twitter', emoji: '𝕏', url: '#' },
+              { name: 'Telegram', emoji: '📱', url: '#' },
+              { name: 'GitHub', emoji: '👨‍💻', url: '#' },
+              { name: 'Base Profile', emoji: '⚡️', url: '#' }
+            ].map((social, i) => (
               <motion.a
                 key={i}
-                href={link.url}
+                href={social.url}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="p-4 bg-card border border-primary/20 rounded-lg hover:border-primary/50 hover:bg-primary/10 transition-all"
+                className="group p-6 bg-card border-2 border-border rounded-xl hover:border-primary hover:bg-primary/5 transition-all cursor-pointer"
               >
-                {link.label}
+                <div className="flex items-center gap-4">
+                  <span className="text-3xl">{social.emoji}</span>
+                  <span className="text-xl font-semibold group-hover:text-primary transition">
+                    {social.name}
+                  </span>
+                </div>
               </motion.a>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Fun Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold"
+          >
+            life is short. build cool stuff. have fun. repeat.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-5xl"
+          >
+            bye love you 💙
+          </motion.p>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-primary/10 text-center text-sm text-muted-foreground">
-        <p>Crafted with Next.js and framer-motion © 2024 Akram</p>
+      <footer className="py-8 px-4 border-t border-border text-center text-sm text-muted-foreground">
+        <p>made with ❤️ by akram © 2024</p>
       </footer>
     </div>
   )
