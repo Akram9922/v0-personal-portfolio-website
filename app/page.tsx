@@ -2,8 +2,20 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useEffect } from 'react'
 
 export default function Page() {
+  useEffect(() => {
+    // Suppress unhandled MetaMask connection errors from browser extensions
+    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+      if (event.reason?.message?.includes('MetaMask') || event.reason?.message?.includes('Failed to connect')) {
+        event.preventDefault()
+      }
+    }
+    
+    window.addEventListener('unhandledrejection', handleUnhandledRejection)
+    return () => window.removeEventListener('unhandledrejection', handleUnhandledRejection)
+  }, [])
   const floatVariants = {
     animate: {
       y: [0, -30, 0],
