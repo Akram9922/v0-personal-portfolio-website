@@ -92,17 +92,9 @@ export default function Page() {
               className="space-y-6 order-2 md:order-1"
             >
               <div>
-                <div className="flex items-end gap-2 mb-2">
-                  <span className="text-6xl md:text-7xl font-black">i</span>
-                  <div className="relative w-12 h-12 md:w-16 md:h-16 mb-1">
-                    <img
-                      src="https://media1.tenor.com/m/fkiPeSRzYOQAAAAC/pepe-skill-issue.gif"
-                      alt="skill issue"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <h1 className="text-6xl md:text-7xl font-black inline">
-                    m <span className="text-primary">akram</span>⚡️
+                <div className="relative">
+                  <h1 className="text-6xl md:text-7xl font-black">
+                    i <span className="relative inline-block">am<div className="absolute left-1/2 -translate-x-1/2 -top-12 w-10 h-10 md:w-12 md:h-12"><img src="https://media1.tenor.com/m/fkiPeSRzYOQAAAAC/pepe-skill-issue.gif" alt="skill issue" className="w-full h-full object-contain" /></div></span> <span className="text-primary">akram</span>⚡️
                   </h1>
                 </div>
                 <p className="text-xl md:text-2xl text-muted-foreground font-medium">
