@@ -92,9 +92,11 @@ export default function Page() {
               className="space-y-6 order-2 md:order-1"
             >
               <div>
-                <h1 className="text-6xl md:text-7xl font-black mb-2">
-                  i am <span className="text-primary">akram</span>⚡️
-                </h1>
+                <div className="relative">
+                  <h1 className="text-6xl md:text-7xl font-black">
+                    i <span className="relative inline-block">am<div className="absolute left-1/2 -translate-x-1/2 -top-12 w-10 h-10 md:w-12 md:h-12"><img src="https://media1.tenor.com/m/fkiPeSRzYOQAAAAC/pepe-skill-issue.gif" alt="skill issue" className="w-full h-full object-contain" /></div></span> <span className="text-primary">akram</span>⚡️
+                  </h1>
+                </div>
                 <p className="text-xl md:text-2xl text-muted-foreground font-medium">
                   a legendary onchain explorer
                 </p>
@@ -147,14 +149,10 @@ export default function Page() {
           }}
           className="absolute left-1/2 -top-12 -translate-x-1/2 z-10"
         >
-          <video
-            src="/images/animation.mp4"
-            alt="Pepe sitting"
+          <img
+            src="https://media.tenor.com/LhbC58wWZrMAAAAj/pepe-transparent.gif"
+            alt="Pepe"
             className="h-32 w-auto drop-shadow-lg"
-            autoPlay
-            loop
-            muted
-            playsInline
           />
         </motion.div>
 
@@ -237,6 +235,20 @@ export default function Page() {
 
       {/* Find Me On Section */}
       <section id="socials" className="py-20 px-4 max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-2xl font-black mb-12 text-center flex items-center justify-center gap-3"
+        >
+          <span>and we all live in a dream that isn't really ours…</span>
+          <img
+            src="https://media.tenor.com/_EY3vJNgjgUAAAAi/meme-pepe.gif"
+            alt="pepe dream"
+            className="h-8 w-auto"
+          />
+        </motion.div>
+
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
