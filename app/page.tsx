@@ -368,6 +368,44 @@ export default function Page() {
           </div>
         </motion.div>
 
+        {/* Follow text with alarm GIF */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center py-8"
+        >
+          <style>{`
+            @keyframes pulse-alarm {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0.6; }
+            }
+            .alarm-gif {
+              animation: pulse-alarm 1s ease-in-out infinite;
+            }
+            .follow-text {
+              transition: all 0.3s ease;
+            }
+            .follow-text:hover {
+              text-shadow: 0 0 20px rgba(69, 129, 255, 0.6);
+              color: hsl(220, 90%, 56%);
+            }
+          `}</style>
+          <div className="flex items-center justify-center gap-3 md:gap-4">
+            <span className="follow-text text-lg md:text-xl font-semibold text-muted-foreground cursor-pointer">
+              If you visit my X, don't forget to follow me.
+            </span>
+            <img
+              src="https://media1.tenor.com/m/iRkL6OMGhU4AAAAC/alarm.gif"
+              alt="alarm"
+              className="alarm-gif h-7 md:h-8 w-auto"
+            />
+          </div>
+        </motion.div>
+
+        {/* Buttons section with increased spacing */}
+        <div className="pt-8 md:pt-12"></div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
             { name: 'Twitter', url: '#' },
