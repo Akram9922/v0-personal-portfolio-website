@@ -16,6 +16,41 @@ export default function Page() {
     window.addEventListener('unhandledrejection', handleUnhandledRejection)
     return () => window.removeEventListener('unhandledrejection', handleUnhandledRejection)
   }, [])
+
+  useEffect(() => {
+    let lastScrollY = 0
+    let scrollVelocity = 0
+    let animationId: NodeJS.Timeout
+    let swingAngle = 0
+    const maxSwingAngle = 15
+    const baseSwingSpeed = 2000
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      scrollVelocity = currentScrollY - lastScrollY
+      lastScrollY = currentScrollY
+    }
+
+    const animate = () => {
+      const gif = document.getElementById('hanging-gif')
+      if (gif) {
+        swingAngle = Math.max(-maxSwingAngle, Math.min(maxSwingAngle, swingAngle + scrollVelocity * 0.1))
+        scrollVelocity *= 0.95
+        
+        gif.style.transform = `rotateZ(${swingAngle}deg)`
+      }
+
+      animationId = setTimeout(animate, 1000 / 60)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    animationId = setTimeout(animate, 1000 / 60)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      clearTimeout(animationId)
+    }
+  }, [])
   const floatVariants = {
     animate: {
       y: [0, -30, 0],
@@ -257,6 +292,119 @@ export default function Page() {
         >
           find me on x
         </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 relative"
+        >
+          <style>{`
+            @keyframes borderGlow {
+              0%, 100% { box-shadow: 0 0 20px rgba(69, 129, 255, 0.3), inset 0 0 20px rgba(69, 129, 255, 0.1); }
+              50% { box-shadow: 0 0 30px rgba(69, 129, 255, 0.5), inset 0 0 30px rgba(69, 129, 255, 0.2); }
+            }
+            .x-link {
+              animation: borderGlow 4s ease-in-out infinite;
+            }
+            .x-link:hover {
+              transform: scale(1.02);
+              box-shadow: 0 0 40px rgba(69, 129, 255, 0.6), inset 0 0 40px rgba(69, 129, 255, 0.3) !important;
+            }
+            @keyframes swing {
+              0%, 100% { transform: rotateZ(0deg); }
+              50% { transform: rotateZ(3deg); }
+            }
+            .hanging-gif {
+              animation: swing 2s ease-in-out infinite;
+              transform-origin: top center;
+            }
+          `}</style>
+          
+          {/* Hanging GIF - positioned in the gap between screenshots */}
+          <div 
+            id="hanging-gif-container"
+            className="absolute left-1/2 z-10 hidden md:block"
+            style={{ 
+              width: '100px',
+              transform: 'translateX(-50%)',
+              top: '50%',
+              marginTop: '-50px'
+            }}
+          >
+            <img
+              id="hanging-gif"
+              src="https://framerusercontent.com/images/0s9a6uVq9FijNsX5y67NSlYO5Mc.webp"
+              alt="hanging"
+              className="hanging-gif w-full h-auto"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a
+              href="https://x.com/beingakramraja"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="x-link rounded-2xl transition-all duration-300 ease-out block border border-primary/20"
+            >
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-02-12%20194433-Dj0pnsJT7TMj1WISWAyKyGFfUxRk1J.png"
+                alt="Akram X Profile"
+                className="w-full rounded-2xl shadow-lg"
+              />
+            </a>
+            <a
+              href="https://x.com/i/status/2020803063251173609"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="x-link rounded-2xl transition-all duration-300 ease-out block border border-primary/20"
+            >
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-02-12%20194500-aRh2ulhn43hKlBy0eo5lcEaVlaSyoz.png"
+                alt="Akram X Post"
+                className="w-full rounded-2xl shadow-lg"
+              />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Follow text with alarm GIF */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center py-12 md:py-16"
+        >
+          <style>{`
+            @keyframes pulse-alarm {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0.6; }
+            }
+            .alarm-gif {
+              animation: pulse-alarm 1s ease-in-out infinite;
+            }
+            .follow-text {
+              transition: all 0.3s ease;
+            }
+            .follow-text:hover {
+              text-shadow: 0 0 20px rgba(69, 129, 255, 0.6);
+              color: hsl(220, 90%, 56%);
+            }
+          `}</style>
+          <div className="flex items-center justify-center gap-4 md:gap-5 flex-wrap">
+            <span className="follow-text text-3xl md:text-4xl font-semibold text-muted-foreground cursor-pointer">
+              If you visit my X, don't forget to follow me.
+            </span>
+            <img
+              src="https://media1.tenor.com/m/iRkL6OMGhU4AAAAC/alarm.gif"
+              alt="alarm"
+              className="alarm-gif h-12 md:h-12 w-auto"
+            />
+          </div>
+        </motion.div>
+
+        {/* Buttons section with increased spacing */}
+        <div className="pt-8 md:pt-12"></div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
