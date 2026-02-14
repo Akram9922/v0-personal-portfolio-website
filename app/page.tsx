@@ -16,6 +16,41 @@ export default function Page() {
     window.addEventListener('unhandledrejection', handleUnhandledRejection)
     return () => window.removeEventListener('unhandledrejection', handleUnhandledRejection)
   }, [])
+
+  useEffect(() => {
+    let lastScrollY = 0
+    let scrollVelocity = 0
+    let animationId: NodeJS.Timeout
+    let swingAngle = 0
+    const maxSwingAngle = 15
+    const baseSwingSpeed = 2000
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      scrollVelocity = currentScrollY - lastScrollY
+      lastScrollY = currentScrollY
+    }
+
+    const animate = () => {
+      const gif = document.getElementById('hanging-gif')
+      if (gif) {
+        swingAngle = Math.max(-maxSwingAngle, Math.min(maxSwingAngle, swingAngle + scrollVelocity * 0.1))
+        scrollVelocity *= 0.95
+        
+        gif.style.transform = `rotateZ(${swingAngle}deg)`
+      }
+
+      animationId = setTimeout(animate, 1000 / 60)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    animationId = setTimeout(animate, 1000 / 60)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      clearTimeout(animationId)
+    }
+  }, [])
   const floatVariants = {
     animate: {
       y: [0, -30, 0],
@@ -262,7 +297,7 @@ export default function Page() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mb-12 relative"
         >
           <style>{`
             @keyframes borderGlow {
@@ -276,7 +311,30 @@ export default function Page() {
               transform: scale(1.02);
               box-shadow: 0 0 40px rgba(69, 129, 255, 0.6), inset 0 0 40px rgba(69, 129, 255, 0.3) !important;
             }
+            @keyframes swing {
+              0%, 100% { transform: rotateZ(0deg); }
+              50% { transform: rotateZ(3deg); }
+            }
+            .hanging-gif {
+              animation: swing 2s ease-in-out infinite;
+              transform-origin: top center;
+            }
           `}</style>
+          
+          {/* Hanging GIF */}
+          <div 
+            id="hanging-gif-container"
+            className="absolute left-1/2 top-0 -translate-x-1/2 z-10 hidden md:block"
+            style={{ width: '100px' }}
+          >
+            <img
+              id="hanging-gif"
+              src="https://framerusercontent.com/images/0s9a6uVq9FijNsX5y67NSlYO5Mc.webp"
+              alt="hanging"
+              className="hanging-gif w-full h-auto"
+            />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <a
               href="https://x.com/beingakramraja"
