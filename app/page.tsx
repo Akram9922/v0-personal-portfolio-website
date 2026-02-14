@@ -373,7 +373,7 @@ export default function Page() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center py-8"
+          className="text-center py-12 md:py-16"
         >
           <style>{`
             @keyframes pulse-alarm {
@@ -391,14 +391,14 @@ export default function Page() {
               color: hsl(220, 90%, 56%);
             }
           `}</style>
-          <div className="flex items-center justify-center gap-3 md:gap-4">
-            <span className="follow-text text-lg md:text-xl font-semibold text-muted-foreground cursor-pointer">
+          <div className="flex items-center justify-center gap-4 md:gap-5 flex-wrap">
+            <span className="follow-text text-3xl md:text-4xl font-semibold text-muted-foreground cursor-pointer">
               If you visit my X, don't forget to follow me.
             </span>
             <img
               src="https://media1.tenor.com/m/iRkL6OMGhU4AAAAC/alarm.gif"
               alt="alarm"
-              className="alarm-gif h-7 md:h-8 w-auto"
+              className="alarm-gif h-12 md:h-12 w-auto"
             />
           </div>
         </motion.div>
