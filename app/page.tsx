@@ -258,6 +258,19 @@ export default function Page() {
           find me on x
         </motion.h2>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex justify-center mb-12"
+        >
+          <img
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-02-12%20194433-Dj0pnsJT7TMj1WISWAyKyGFfUxRk1J.png"
+            alt="Akram X Profile"
+            className="w-full max-w-[520px] rounded-2xl shadow-lg"
+          />
+        </motion.div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
             { name: 'Twitter', url: '#' },
