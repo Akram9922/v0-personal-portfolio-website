@@ -262,33 +262,47 @@ export default function Page() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center mb-12"
+          className="mb-12"
         >
           <style>{`
             @keyframes borderGlow {
               0%, 100% { box-shadow: 0 0 20px rgba(69, 129, 255, 0.3), inset 0 0 20px rgba(69, 129, 255, 0.1); }
               50% { box-shadow: 0 0 30px rgba(69, 129, 255, 0.5), inset 0 0 30px rgba(69, 129, 255, 0.2); }
             }
-            .x-profile-link {
+            .x-link {
               animation: borderGlow 4s ease-in-out infinite;
             }
-            .x-profile-link:hover {
+            .x-link:hover {
               transform: scale(1.02);
               box-shadow: 0 0 40px rgba(69, 129, 255, 0.6), inset 0 0 40px rgba(69, 129, 255, 0.3) !important;
             }
           `}</style>
-          <a
-            href="https://x.com/beingakramraja"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="x-profile-link w-full max-w-[520px] rounded-2xl transition-all duration-300 ease-out block border border-primary/20"
-          >
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-02-12%20194433-Dj0pnsJT7TMj1WISWAyKyGFfUxRk1J.png"
-              alt="Akram X Profile"
-              className="w-full rounded-2xl shadow-lg"
-            />
-          </a>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a
+              href="https://x.com/beingakramraja"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="x-link rounded-2xl transition-all duration-300 ease-out block border border-primary/20"
+            >
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-02-12%20194433-Dj0pnsJT7TMj1WISWAyKyGFfUxRk1J.png"
+                alt="Akram X Profile"
+                className="w-full rounded-2xl shadow-lg"
+              />
+            </a>
+            <a
+              href="https://x.com/i/status/2020803063251173609"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="x-link rounded-2xl transition-all duration-300 ease-out block border border-primary/20"
+            >
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-02-12%20194500-aRh2ulhn43hKlBy0eo5lcEaVlaSyoz.png"
+                alt="Akram X Post"
+                className="w-full rounded-2xl shadow-lg"
+              />
+            </a>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
