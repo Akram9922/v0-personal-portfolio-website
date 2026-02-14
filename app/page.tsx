@@ -321,11 +321,16 @@ export default function Page() {
             }
           `}</style>
           
-          {/* Hanging GIF */}
+          {/* Hanging GIF - positioned in the gap between screenshots */}
           <div 
             id="hanging-gif-container"
-            className="absolute left-1/2 top-0 -translate-x-1/2 z-10 hidden md:block"
-            style={{ width: '100px' }}
+            className="absolute left-1/2 z-10 hidden md:block"
+            style={{ 
+              width: '100px',
+              transform: 'translateX(-50%)',
+              top: '50%',
+              marginTop: '-50px'
+            }}
           >
             <img
               id="hanging-gif"
