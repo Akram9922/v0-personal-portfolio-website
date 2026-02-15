@@ -207,7 +207,8 @@ export default function Page() {
                 <img
                   src="https://i.ibb.co/tpRmrsjB/Picsart-26-02-15-11-52-26-004.png"
                   alt="Akram Profile"
-                  className="profile-img w-full h-full rounded-full object-cover"
+                  className="profile-img w-full h-full rounded-full object-contain"
+                  style={{ objectPosition: 'center top' }}
                 />
                 <div className="glow-effect" />
               </div>
