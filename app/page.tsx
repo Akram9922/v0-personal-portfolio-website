@@ -148,19 +148,25 @@ export default function Page() {
               </div>
             </motion.div>
 
-            {/* Right: Animated Character */}
+            {/* Right: Profile Image */}
             <motion.div
               variants={floatVariants}
               animate="animate"
               initial={{ opacity: 0, scale: 0.8 }}
-              className="relative h-96 md:h-full min-h-96 order-1 md:order-2 flex items-center justify-center"
+              className="relative h-80 md:h-96 order-1 md:order-2 flex items-center justify-center"
             >
-              <Image
-                src="/frog-character.jpg"
-                alt="Akram Frog Character"
-                width={400}
-                height={400}
-                className="object-contain drop-shadow-2xl"
+              <style>{`
+                .profile-img {
+                  transition: transform 0.3s ease;
+                }
+                .profile-img:hover {
+                  transform: scale(1.05);
+                }
+              `}</style>
+              <img
+                src="https://ibb.co/CKL1G7CB"
+                alt="Akram Profile"
+                className="profile-img w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-xl"
               />
             </motion.div>
           </div>
