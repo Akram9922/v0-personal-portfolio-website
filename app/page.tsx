@@ -438,9 +438,16 @@ export default function Page() {
           transition={{ duration: 0.6 }}
           className="space-y-8 max-w-4xl mx-auto"
         >
-          <p className="text-4xl md:text-5xl font-black">
-            bye love you ���
-          </p>
+          <div className="flex items-center justify-center gap-4 md:gap-6 flex-wrap">
+            <p className="text-4xl md:text-5xl font-black">
+              bye love you
+            </p>
+            <img
+              src="https://media.tenor.com/qGSeUrlS1qkAAAAi/sending-lots-of-love-sending-love.gif"
+              alt="sending love"
+              className="h-20 md:h-24 w-auto"
+            />
+          </div>
         </motion.div>
       </section>
 
