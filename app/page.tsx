@@ -150,24 +150,67 @@ export default function Page() {
 
             {/* Right: Profile Image */}
             <motion.div
-              variants={floatVariants}
-              animate="animate"
               initial={{ opacity: 0, scale: 0.8 }}
-              className="order-1 md:order-2 flex items-center justify-center"
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="order-1 md:order-2 flex items-center justify-center relative"
             >
               <style>{`
-                .profile-img {
-                  transition: transform 0.3s ease;
+                @keyframes float-subtle {
+                  0%, 100% { transform: translateY(0px); }
+                  50% { transform: translateY(-20px); }
                 }
+                
+                @keyframes smoke-drift {
+                  0% { transform: translateX(-20px) translateY(0px); opacity: 0.3; }
+                  50% { transform: translateX(20px) translateY(-10px); opacity: 0.2; }
+                  100% { transform: translateX(-20px) translateY(0px); opacity: 0.3; }
+                }
+                
+                .profile-container {
+                  position: relative;
+                  animation: float-subtle 5s ease-in-out infinite;
+                }
+                
+                .smoke-effect {
+                  position: absolute;
+                  animation: smoke-drift 6s ease-in-out infinite;
+                }
+                
+                .profile-img {
+                  transition: all 0.3s ease;
+                  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+                }
+                
                 .profile-img:hover {
                   transform: scale(1.05);
+                  filter: drop-shadow(0 15px 40px rgba(69, 129, 255, 0.3));
+                }
+                
+                .glow-effect {
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                  box-shadow: inset 0 0 30px rgba(69, 129, 255, 0.15), 0 0 40px rgba(69, 129, 255, 0.1);
+                  pointer-events: none;
                 }
               `}</style>
-              <img
-                src="https://ibb.co/CKL1G7CB"
-                alt="Akram Profile"
-                className="profile-img w-72 h-72 md:w-80 md:h-80 rounded-full object-cover shadow-xl"
-              />
+              
+              {/* Smoke effect container */}
+              <div className="smoke-effect absolute w-full h-full" style={{ filter: 'blur(40px)' }}>
+                <div className="w-56 h-56 md:w-72 md:h-72 rounded-full bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-transparent" />
+              </div>
+              
+              {/* Profile image container */}
+              <div className="profile-container relative w-56 h-56 md:w-72 md:h-72">
+                <img
+                  src="https://i.ibb.co/tpRmrsjB/Picsart-26-02-15-11-52-26-004.png"
+                  alt="Akram Profile"
+                  className="profile-img w-full h-full rounded-full object-cover"
+                />
+                <div className="glow-effect" />
+              </div>
             </motion.div>
           </div>
         </div>
