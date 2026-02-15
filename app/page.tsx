@@ -384,21 +384,22 @@ export default function Page() {
               animation: pulse-alarm 1s ease-in-out infinite;
             }
             .follow-text {
+              color: hsl(45, 96%, 56%);
               transition: all 0.3s ease;
             }
             .follow-text:hover {
-              text-shadow: 0 0 20px rgba(69, 129, 255, 0.6);
-              color: hsl(220, 90%, 56%);
+              text-shadow: 0 0 20px hsl(45, 96%, 56%);
+              opacity: 0.9;
             }
           `}</style>
           <div className="flex items-center justify-center gap-4 md:gap-5 flex-wrap">
-            <span className="follow-text text-3xl md:text-4xl font-semibold text-muted-foreground cursor-pointer">
+            <span className="follow-text text-3xl md:text-4xl font-semibold cursor-pointer">
               If you visit my X, don't forget to follow me.
             </span>
             <img
               src="https://media1.tenor.com/m/iRkL6OMGhU4AAAAC/alarm.gif"
               alt="alarm"
-              className="alarm-gif h-12 md:h-12 w-auto"
+              className="alarm-gif h-24 md:h-24 w-auto"
             />
           </div>
         </motion.div>
@@ -438,7 +439,7 @@ export default function Page() {
           className="space-y-8 max-w-4xl mx-auto"
         >
           <p className="text-4xl md:text-5xl font-black">
-            bye love you 💙
+            bye love you ���
           </p>
         </motion.div>
       </section>
