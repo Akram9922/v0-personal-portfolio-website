@@ -124,7 +124,7 @@ export default function Page() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-6 order-2 md:order-1"
+              className="space-y-6 order-2 md:order-1 md:pr-8"
             >
               <div>
                 <div className="relative">
@@ -153,7 +153,7 @@ export default function Page() {
               variants={floatVariants}
               animate="animate"
               initial={{ opacity: 0, scale: 0.8 }}
-              className="relative h-80 md:h-96 order-1 md:order-2 flex items-center justify-center"
+              className="order-1 md:order-2 flex items-center justify-center"
             >
               <style>{`
                 .profile-img {
@@ -166,7 +166,7 @@ export default function Page() {
               <img
                 src="https://ibb.co/CKL1G7CB"
                 alt="Akram Profile"
-                className="profile-img w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-xl"
+                className="profile-img w-72 h-72 md:w-80 md:h-80 rounded-full object-cover shadow-xl"
               />
             </motion.div>
           </div>
