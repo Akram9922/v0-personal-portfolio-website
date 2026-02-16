@@ -78,6 +78,29 @@ export default function Page() {
     <div className="bg-background text-foreground min-h-screen">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border py-3 px-4">
+        <style>{`
+          .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+          }
+          .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, hsl(45, 96%, 56%), transparent);
+            transition: width 0.3s ease;
+          }
+          .nav-link:hover::after {
+            width: 100%;
+          }
+          .nav-link:hover {
+            transform: scale(1.03);
+            text-shadow: 0 0 8px hsl(45, 96%, 56%);
+          }
+        `}</style>
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0 }}
@@ -86,10 +109,10 @@ export default function Page() {
           >
             akram ⚡️
           </motion.div>
-          <div className="flex gap-4 text-xs md:text-sm">
-            <a href="#socials" className="hover:text-primary transition">Twitter</a>
-            <a href="#socials" className="hover:text-primary transition">Telegram</a>
-            <a href="#socials" className="hover:text-primary transition">GitHub</a>
+          <div className="flex gap-6 text-xs md:text-sm">
+            <a href="https://x.com/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary">Twitter</a>
+            <a href="https://t.me/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary">Telegram</a>
+            <a href="https://github.com/akram9922" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary">GitHub</a>
           </div>
         </div>
       </nav>
@@ -132,7 +155,7 @@ export default function Page() {
                     i <span className="relative inline-block">am<div className="absolute left-1/2 -translate-x-1/2 -top-16 md:-top-12 w-10 h-10 md:w-12 md:h-12"><img src="https://media1.tenor.com/m/fkiPeSRzYOQAAAAC/pepe-skill-issue.gif" alt="skill issue" className="w-full h-full object-contain" /></div></span> <span className="text-primary">akram</span>⚡️
                   </h1>
                 </div>
-                <p className="text-xl md:text-2xl text-muted-foreground font-medium">
+                <p className="text-xl md:text-2xl text-muted-foreground font-normal leading-relaxed tracking-wide">
                   a legendary onchain explorer
                 </p>
               </div>
@@ -237,6 +260,9 @@ export default function Page() {
         </div>
       </section>
 
+      {/* Subtle section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
       {/* My Hobbies Section */}
       <section className="py-20 px-4 max-w-6xl mx-auto relative pt-24">
         {/* Animated Pepe sitting on top */}
@@ -293,8 +319,11 @@ export default function Page() {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.6 }}
-                  className="flex justify-center mt-8"
+                  className="flex flex-col items-center mt-8"
                 >
+                  <p className="text-xs md:text-sm text-muted-foreground font-medium mb-4 tracking-widest uppercase">
+                    airdrop hunting mode
+                  </p>
                   <img
                     src="https://media.tenor.com/bpHKtJCDixAAAAAi/happy-cat.gif"
                     alt="happy cat"
@@ -354,6 +383,9 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      {/* Subtle section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
 
       {/* Find Me On Section */}
       <section id="socials" className="py-20 px-4 max-w-6xl mx-auto">
@@ -494,28 +526,43 @@ export default function Page() {
         {/* Buttons section with increased spacing */}
         <div className="pt-8 md:pt-12"></div>
 
+        <style>{`
+          .social-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          }
+          .social-button:hover {
+            box-shadow: 0 8px 24px rgba(69, 129, 255, 0.15);
+            transform: translateY(-2px);
+          }
+        `}</style>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
-            { name: 'Twitter', url: '#' },
-            { name: 'Telegram', url: '#' },
-            { name: 'GitHub', url: '#' },
-            { name: 'Base Profile', url: '#' }
+            { name: 'Twitter', url: 'https://x.com/beingakramraja' },
+            { name: 'Telegram', url: 'https://t.me/beingakramraja' },
+            { name: 'GitHub', url: 'https://github.com/akram9922' },
+            { name: 'Base Profile', url: 'https://base.org/ecosystem' }
           ].map((social, i) => (
             <motion.a
               key={i}
               href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group p-8 bg-card border-2 border-border rounded-xl hover:border-primary hover:bg-primary/5 transition-all cursor-pointer"
+              className="social-button group p-8 bg-card border-2 border-border rounded-2xl hover:border-primary hover:bg-primary/5"
             >
-              <span className="text-2xl font-bold group-hover:text-primary transition">
+              <span className="text-2xl font-bold group-hover:text-primary transition-colors">
                 {social.name}
               </span>
             </motion.a>
           ))}
         </div>
       </section>
+
+      {/* Subtle section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
 
       {/* Closing Section */}
       <section className="py-20 px-4 text-center">
