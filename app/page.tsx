@@ -127,7 +127,7 @@ export default function Page() {
               className="space-y-6 order-2 md:order-1 md:pr-8"
             >
               <div>
-                <div className="relative">
+                <div className="relative mt-20 md:mt-0">
                   <h1 className="text-6xl md:text-7xl font-black">
                     i <span className="relative inline-block">am<div className="absolute left-1/2 -translate-x-1/2 -top-16 md:-top-12 w-10 h-10 md:w-12 md:h-12"><img src="https://media1.tenor.com/m/fkiPeSRzYOQAAAAC/pepe-skill-issue.gif" alt="skill issue" className="w-full h-full object-contain" /></div></span> <span className="text-primary">akram</span>⚡️
                   </h1>
@@ -293,12 +293,12 @@ export default function Page() {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ duration: 0.6 }}
-                  className="flex justify-center mt-6"
+                  className="flex justify-center mt-8"
                 >
                   <img
                     src="https://media.tenor.com/bpHKtJCDixAAAAAi/happy-cat.gif"
                     alt="happy cat"
-                    className="h-16 md:h-20 w-auto"
+                    className="h-40 md:h-44 w-auto"
                   />
                 </motion.div>
               )}
