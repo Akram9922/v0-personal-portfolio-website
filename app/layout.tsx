@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: 'Akram - Onchain Explorer',
   description: 'Building on Base. Content creator, mini-app builder, and onchain explorer.',
   generator: 'v0.app',
+  icons: {
+    icon: 'https://i.ibb.co/mrtxbs7n/file-00000000f2807209b88b2792caa64ee7.png',
+  },
 }
 
 export default function RootLayout({
