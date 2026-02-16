@@ -153,64 +153,84 @@ export default function Page() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="order-1 md:order-2 flex items-center justify-center relative"
+              className="order-1 md:order-2 flex items-center justify-end relative"
             >
               <style>{`
-                @keyframes float-subtle {
+                @keyframes float-premium {
                   0%, 100% { transform: translateY(0px); }
-                  50% { transform: translateY(-20px); }
-                }
-                
-                @keyframes smoke-drift {
-                  0% { transform: translateX(-20px) translateY(0px); opacity: 0.3; }
-                  50% { transform: translateX(20px) translateY(-10px); opacity: 0.2; }
-                  100% { transform: translateX(-20px) translateY(0px); opacity: 0.3; }
+                  50% { transform: translateY(-3px); }
                 }
                 
                 .profile-container {
                   position: relative;
-                  animation: float-subtle 5s ease-in-out infinite;
+                  animation: float-premium 5s ease-in-out infinite;
                 }
                 
-                .smoke-effect {
-                  position: absolute;
-                  animation: smoke-drift 6s ease-in-out infinite;
+                .profile-img-wrapper {
+                  position: relative;
+                  overflow: hidden;
                 }
                 
                 .profile-img {
-                  transition: all 0.3s ease;
-                  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
-                }
-                
-                .profile-img:hover {
-                  transform: scale(1.05);
-                  filter: drop-shadow(0 15px 40px rgba(69, 129, 255, 0.3));
-                }
-                
-                .glow-effect {
-                  position: absolute;
+                  display: block;
                   width: 100%;
                   height: 100%;
-                  border-radius: 50%;
-                  box-shadow: inset 0 0 30px rgba(69, 129, 255, 0.15), 0 0 40px rgba(69, 129, 255, 0.1);
+                  object-fit: cover;
+                  object-position: center top;
+                }
+                
+                .bottom-fade {
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  right: 0;
+                  height: 40%;
+                  background: linear-gradient(to bottom, transparent 0%, rgba(10, 20, 30, 0.3) 50%, rgba(10, 20, 30, 0.8) 100%);
+                  pointer-events: none;
+                }
+                
+                .soft-shadow {
+                  position: absolute;
+                  bottom: -30px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  width: 90%;
+                  height: 60px;
+                  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.12) 0%, transparent 70%);
+                  filter: blur(20px);
+                  pointer-events: none;
+                }
+                
+                .smoke-blend {
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  right: 0;
+                  height: 30%;
+                  background: linear-gradient(to bottom, transparent 0%, rgba(100, 150, 200, 0.05) 100%);
+                  filter: blur(15px);
                   pointer-events: none;
                 }
               `}</style>
               
-              {/* Smoke effect container */}
-              <div className="smoke-effect absolute w-full h-full" style={{ filter: 'blur(40px)' }}>
-                <div className="w-56 h-56 md:w-72 md:h-72 rounded-full bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-transparent" />
-              </div>
-              
               {/* Profile image container */}
-              <div className="profile-container relative w-56 h-56 md:w-72 md:h-72">
-                <img
-                  src="https://i.ibb.co/tpRmrsjB/Picsart-26-02-15-11-52-26-004.png"
-                  alt="Akram Profile"
-                  className="profile-img w-full h-full rounded-full object-cover"
-                  style={{ objectPosition: 'center 45%' }}
-                />
-                <div className="glow-effect" />
+              <div className="profile-container relative w-96 md:w-full md:max-w-md">
+                <div className="profile-img-wrapper h-96 md:h-full md:min-h-96">
+                  <img
+                    src="https://i.ibb.co/tpRmrsjB/Picsart-26-02-15-11-52-26-004.png"
+                    alt="Akram Profile"
+                    className="profile-img"
+                  />
+                  
+                  {/* Bottom fade gradient */}
+                  <div className="bottom-fade" />
+                  
+                  {/* Soft smoke blend at bottom */}
+                  <div className="smoke-blend" />
+                </div>
+                
+                {/* Subtle shadow under portrait */}
+                <div className="soft-shadow" />
               </div>
             </motion.div>
           </div>
