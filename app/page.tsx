@@ -129,7 +129,7 @@ export default function Page() {
               <div>
                 <div className="relative">
                   <h1 className="text-6xl md:text-7xl font-black">
-                    i <span className="relative inline-block">am<div className="absolute left-1/2 -translate-x-1/2 -top-12 w-10 h-10 md:w-12 md:h-12"><img src="https://media1.tenor.com/m/fkiPeSRzYOQAAAAC/pepe-skill-issue.gif" alt="skill issue" className="w-full h-full object-contain" /></div></span> <span className="text-primary">akram</span>⚡️
+                    i <span className="relative inline-block">am<div className="absolute left-1/2 -translate-x-1/2 -top-16 md:-top-12 w-10 h-10 md:w-12 md:h-12"><img src="https://media1.tenor.com/m/fkiPeSRzYOQAAAAC/pepe-skill-issue.gif" alt="skill issue" className="w-full h-full object-contain" /></div></span> <span className="text-primary">akram</span>⚡️
                   </h1>
                 </div>
                 <p className="text-xl md:text-2xl text-muted-foreground font-medium">
@@ -277,15 +277,32 @@ export default function Page() {
             'mini-app builder - developing dApps. building tools on base.',
             'research & airdrop hunting - finding emerging opportunities.'
           ].map((hobby, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="text-2xl font-bold border-b-2 border-border pb-6 hover:border-primary transition-colors"
-            >
-              {hobby}
-            </motion.div>
+            <div key={i}>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="text-2xl font-bold border-b-2 border-border pb-6 hover:border-primary transition-colors"
+              >
+                {hobby}
+              </motion.div>
+              
+              {/* Happy cat GIF below research & airdrop hunting */}
+              {i === 3 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className="flex justify-center mt-6"
+                >
+                  <img
+                    src="https://media.tenor.com/bpHKtJCDixAAAAAi/happy-cat.gif"
+                    alt="happy cat"
+                    className="h-16 md:h-20 w-auto"
+                  />
+                </motion.div>
+              )}
+            </div>
           ))}
         </div>
       </section>
