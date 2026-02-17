@@ -79,26 +79,16 @@ export default function Page() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border py-3 px-4">
         <style>{`
-          .nav-link {
-            position: relative;
+          .nav-icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
+            filter: brightness(0.8);
           }
-          .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, hsl(45, 96%, 56%), transparent);
-            transition: width 0.3s ease;
-          }
-          .nav-link:hover::after {
-            width: 100%;
-          }
-          .nav-link:hover {
-            transform: scale(1.03);
-            text-shadow: 0 0 8px hsl(45, 96%, 56%);
+          .nav-icon-link:hover {
+            transform: scale(1.15);
+            filter: brightness(1.2) drop-shadow(0 0 8px hsl(45, 96%, 56%));
           }
         `}</style>
         <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -109,10 +99,16 @@ export default function Page() {
           >
             akram ⚡️
           </motion.div>
-          <div className="flex gap-6 text-xs md:text-sm">
-            <a href="https://x.com/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary">Twitter</a>
-            <a href="https://t.me/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary">Telegram</a>
-            <a href="https://github.com/akram9922" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary">GitHub</a>
+          <div className="flex gap-4 items-center">
+            <a href="https://x.com/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="Twitter">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl0ZB2XDhReZS9VUltiq2c7JNPeuWjeNApbkPejhdr4suBp0xs5MefirQ&s=10" alt="Twitter" className="w-6 h-6" />
+            </a>
+            <a href="https://t.me/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="Telegram">
+              <img src="https://static.vecteezy.com/system/resources/previews/065/386/675/non_2x/telegram-circle-black-logo-icon-telegram-app-editable-svg-transparent-background-premium-social-media-design-for-digital-download-free-png.png" alt="Telegram" className="w-6 h-6" />
+            </a>
+            <a href="https://github.com/akram9922" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="GitHub">
+              <img src="https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png" alt="GitHub" className="w-6 h-6" />
+            </a>
           </div>
         </div>
       </nav>
@@ -146,7 +142,8 @@ export default function Page() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
               className="space-y-6 order-2 md:order-1 md:pr-8"
             >
               <div>
@@ -288,9 +285,9 @@ export default function Page() {
         </motion.div>
 
         <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-5xl font-black mb-12 text-center"
         >
           my hobbies
@@ -307,7 +304,7 @@ export default function Page() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
                 className="text-2xl font-bold border-b-2 border-border pb-6 hover:border-primary transition-colors"
               >
                 {hobby}
@@ -350,15 +347,20 @@ export default function Page() {
           <p className="text-xs md:text-sm text-muted-foreground font-medium mb-4 tracking-widest uppercase text-center">
             live projects
           </p>
-          <h2 className="text-5xl font-black mb-12 text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="text-5xl font-black mb-12 text-center"
+          >
             What I'm building
-          </h2>
+          </motion.h2>
 
           {/* Project Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
             className="max-w-2xl mx-auto bg-card border-2 border-border rounded-2xl p-8 hover:border-primary/50 transition-all shadow-lg"
           >
             <h3 className="text-3xl font-bold mb-4">
@@ -385,9 +387,9 @@ export default function Page() {
       {/* CTA Section */}
       <section className="py-20 px-4 max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-center space-y-8"
         >
           <style>{`
@@ -491,9 +493,9 @@ export default function Page() {
         </motion.div>
 
         <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-5xl font-black mb-12 text-center"
         >
           find me on x
@@ -637,7 +639,7 @@ export default function Page() {
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
               className="social-button group p-8 bg-card border-2 border-border rounded-2xl hover:border-primary hover:bg-primary/5"
             >
               <span className="text-2xl font-bold group-hover:text-primary transition-colors">
@@ -676,6 +678,24 @@ export default function Page() {
       <footer className="py-8 px-4 border-t border-border text-center text-sm text-muted-foreground">
         <p>made with ❤️ by akram © 2024</p>
       </footer>
+
+      {/* Floating Work with me Button */}
+      <motion.a
+        href="https://x.com/beingakramraja"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+        whileHover={{ scale: 1.05, y: -4 }}
+        whileTap={{ scale: 0.95 }}
+        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 px-6 py-3 bg-primary text-primary-foreground font-bold rounded-full shadow-lg hover:shadow-xl transition-all"
+        style={{
+          boxShadow: '0 4px 20px rgba(69, 129, 255, 0.25)',
+        }}
+      >
+        ⚡ Work with me
+      </motion.a>
     </div>
   )
 }
