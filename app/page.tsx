@@ -390,43 +390,36 @@ export default function Page() {
           transition={{ duration: 0.6 }}
           className="text-center space-y-8"
         >
+          <style>{`
+            .cta-button {
+              transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+            .cta-button:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 12px 24px rgba(69, 129, 255, 0.25);
+            }
+            .cta-button:active {
+              transform: scale(0.96);
+              box-shadow: 0 4px 12px rgba(69, 129, 255, 0.15);
+            }
+          `}</style>
           <h2 className="text-5xl font-black">
             let's work together
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Open for ambassador roles, content, and onchain experiments.
           </p>
+          <p className="text-lg text-muted-foreground">
+            Need content, research, or early alpha?
+          </p>
           <a
             href="https://x.com/beingakramraja"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all hover:shadow-lg"
+            className="cta-button inline-block px-8 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90"
           >
             DM me on X
           </a>
-        </motion.div>
-      </section>
-
-      {/* Subtle section divider */}
-      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
-
-      {/* Contact Strip */}
-      <section className="py-12 px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-6"
-        >
-          <p className="text-lg text-muted-foreground">
-            Need content, research, or early alpha?
-          </p>
-          <div className="flex justify-center gap-6 flex-wrap">
-            <a href="https://x.com/beingakramraja" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold transition-colors">Twitter</a>
-            <a href="https://t.me/beingakramraja" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold transition-colors">Telegram</a>
-            <a href="https://github.com/akram9922" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold transition-colors">GitHub</a>
-            <a href="https://base.org/ecosystem" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold transition-colors">Base Profile</a>
-          </div>
         </motion.div>
       </section>
 
