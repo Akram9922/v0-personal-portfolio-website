@@ -79,26 +79,24 @@ export default function Page() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border py-3 px-4">
         <style>{`
-          .nav-link {
-            position: relative;
-            transition: all 0.3s ease;
+          .nav-icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0.7;
           }
-          .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, hsl(45, 96%, 56%), transparent);
-            transition: width 0.3s ease;
+          .nav-icon-link:hover {
+            transform: scale(1.1);
+            opacity: 1;
+            filter: drop-shadow(0 0 6px hsl(45, 96%, 56%));
           }
-          .nav-link:hover::after {
+          .nav-icon-link img {
             width: 100%;
-          }
-          .nav-link:hover {
-            transform: scale(1.03);
-            text-shadow: 0 0 8px hsl(45, 96%, 56%);
+            height: 100%;
+            object-fit: contain;
           }
         `}</style>
         <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -109,10 +107,16 @@ export default function Page() {
           >
             akram ⚡️
           </motion.div>
-          <div className="flex gap-6 text-xs md:text-sm">
-            <a href="https://x.com/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary">Twitter</a>
-            <a href="https://t.me/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary">Telegram</a>
-            <a href="https://github.com/akram9922" target="_blank" rel="noopener noreferrer" className="nav-link hover:text-primary">GitHub</a>
+          <div className="flex gap-6 items-center">
+            <a href="https://x.com/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="Twitter / X">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/120px-X_logo_2023.svg.png" alt="X" />
+            </a>
+            <a href="https://t.me/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="Telegram">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" />
+            </a>
+            <a href="https://github.com/akram9922" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="GitHub">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" />
+            </a>
           </div>
         </div>
       </nav>
@@ -146,7 +150,8 @@ export default function Page() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
               className="space-y-6 order-2 md:order-1 md:pr-8"
             >
               <div>
@@ -288,9 +293,9 @@ export default function Page() {
         </motion.div>
 
         <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-5xl font-black mb-12 text-center"
         >
           my hobbies
@@ -307,7 +312,7 @@ export default function Page() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
                 className="text-2xl font-bold border-b-2 border-border pb-6 hover:border-primary transition-colors"
               >
                 {hobby}
@@ -334,6 +339,98 @@ export default function Page() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Subtle section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+      {/* What I'm Building Section */}
+      <section className="py-20 px-4 max-w-6xl mx-auto bg-[#fafafa] -mx-4 px-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-6xl mx-auto"
+        >
+          <p className="text-xs md:text-sm text-muted-foreground font-medium mb-4 tracking-widest uppercase text-center">
+            live projects
+          </p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="text-5xl font-black mb-12 text-center"
+          >
+            What I'm building
+          </motion.h2>
+
+          {/* Project Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="max-w-2xl mx-auto bg-card border-2 border-border rounded-2xl p-8 hover:border-primary/50 transition-all shadow-lg"
+          >
+            <h3 className="text-3xl font-bold mb-4">
+              Base Analytics Checker
+            </h3>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              A simple onchain tool to check Base wallet activity, contracts, swaps, bridges, and social stats in one place.
+            </p>
+            <a
+              href="https://baseanalytics.lovable.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all hover:shadow-lg"
+            >
+              Open Tool
+            </a>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Subtle section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="text-center space-y-8"
+        >
+          <style>{`
+            .cta-button {
+              transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+            .cta-button:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 12px 24px rgba(69, 129, 255, 0.25);
+            }
+            .cta-button:active {
+              transform: scale(0.96);
+              box-shadow: 0 4px 12px rgba(69, 129, 255, 0.15);
+            }
+          `}</style>
+          <h2 className="text-5xl font-black">
+            let's work together
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Open for ambassador roles, content, and onchain experiments.
+          </p>
+          <p className="text-lg text-muted-foreground">
+            Need content, research, or early alpha?
+          </p>
+          <a
+            href="https://x.com/beingakramraja"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-button inline-block px-8 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90"
+          >
+            DM me on X
+          </a>
+        </motion.div>
       </section>
 
       {/* We All Live In Section */}
@@ -404,9 +501,9 @@ export default function Page() {
         </motion.div>
 
         <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-5xl font-black mb-12 text-center"
         >
           find me on x
@@ -550,7 +647,7 @@ export default function Page() {
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: 'easeOut' }}
               className="social-button group p-8 bg-card border-2 border-border rounded-2xl hover:border-primary hover:bg-primary/5"
             >
               <span className="text-2xl font-bold group-hover:text-primary transition-colors">
@@ -589,6 +686,24 @@ export default function Page() {
       <footer className="py-8 px-4 border-t border-border text-center text-sm text-muted-foreground">
         <p>made with ❤️ by akram © 2024</p>
       </footer>
+
+      {/* Floating Work with me Button */}
+      <motion.a
+        href="https://x.com/beingakramraja"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+        whileHover={{ scale: 1.05, y: -4 }}
+        whileTap={{ scale: 0.95 }}
+        className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 px-6 py-3 bg-primary text-primary-foreground font-bold rounded-full shadow-lg hover:shadow-xl transition-all"
+        style={{
+          boxShadow: '0 4px 20px rgba(69, 129, 255, 0.25)',
+        }}
+      >
+        ⚡ Work with me
+      </motion.a>
     </div>
   )
 }
