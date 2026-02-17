@@ -83,12 +83,20 @@ export default function Page() {
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            filter: brightness(0.8);
+            width: 24px;
+            height: 24px;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0.7;
           }
           .nav-icon-link:hover {
-            transform: scale(1.15);
-            filter: brightness(1.2) drop-shadow(0 0 8px hsl(45, 96%, 56%));
+            transform: scale(1.1);
+            opacity: 1;
+            filter: drop-shadow(0 0 6px hsl(45, 96%, 56%));
+          }
+          .nav-icon-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
           }
         `}</style>
         <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -99,15 +107,15 @@ export default function Page() {
           >
             akram ⚡️
           </motion.div>
-          <div className="flex gap-4 items-center">
-            <a href="https://x.com/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="Twitter">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl0ZB2XDhReZS9VUltiq2c7JNPeuWjeNApbkPejhdr4suBp0xs5MefirQ&s=10" alt="Twitter" className="w-6 h-6" />
+          <div className="flex gap-6 items-center">
+            <a href="https://x.com/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="Twitter / X">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/X_logo_2023_%28white%29.png" alt="X" />
             </a>
             <a href="https://t.me/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="Telegram">
-              <img src="https://static.vecteezy.com/system/resources/previews/065/386/675/non_2x/telegram-circle-black-logo-icon-telegram-app-editable-svg-transparent-background-premium-social-media-design-for-digital-download-free-png.png" alt="Telegram" className="w-6 h-6" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" />
             </a>
             <a href="https://github.com/akram9922" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="GitHub">
-              <img src="https://1000logos.net/wp-content/uploads/2021/05/GitHub-logo.png" alt="GitHub" className="w-6 h-6" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" />
             </a>
           </div>
         </div>
