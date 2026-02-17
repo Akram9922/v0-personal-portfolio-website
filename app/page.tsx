@@ -336,6 +336,100 @@ export default function Page() {
         </div>
       </section>
 
+      {/* Subtle section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+      {/* What I'm Building Section */}
+      <section className="py-20 px-4 max-w-6xl mx-auto bg-[#fafafa] -mx-4 px-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-6xl mx-auto"
+        >
+          <p className="text-xs md:text-sm text-muted-foreground font-medium mb-4 tracking-widest uppercase text-center">
+            live projects
+          </p>
+          <h2 className="text-5xl font-black mb-12 text-center">
+            What I'm building
+          </h2>
+
+          {/* Project Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mx-auto bg-card border-2 border-border rounded-2xl p-8 hover:border-primary/50 transition-all shadow-lg"
+          >
+            <h3 className="text-3xl font-bold mb-4">
+              Base Analytics Checker
+            </h3>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              A simple onchain tool to check Base wallet activity, contracts, swaps, bridges, and social stats in one place.
+            </p>
+            <a
+              href="https://baseanalytics.lovable.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all hover:shadow-lg"
+            >
+              Open Tool
+            </a>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Subtle section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center space-y-8"
+        >
+          <h2 className="text-5xl font-black">
+            let's work together
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Open for ambassador roles, content, and onchain experiments.
+          </p>
+          <a
+            href="https://x.com/beingakramraja"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-3 bg-primary text-primary-foreground font-bold rounded-lg hover:bg-primary/90 transition-all hover:shadow-lg"
+          >
+            DM me on X
+          </a>
+        </motion.div>
+      </section>
+
+      {/* Subtle section divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+      {/* Contact Strip */}
+      <section className="py-12 px-4 text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6"
+        >
+          <p className="text-lg text-muted-foreground">
+            Need content, research, or early alpha?
+          </p>
+          <div className="flex justify-center gap-6 flex-wrap">
+            <a href="https://x.com/beingakramraja" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold transition-colors">Twitter</a>
+            <a href="https://t.me/beingakramraja" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold transition-colors">Telegram</a>
+            <a href="https://github.com/akram9922" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold transition-colors">GitHub</a>
+            <a href="https://base.org/ecosystem" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 font-semibold transition-colors">Base Profile</a>
+          </div>
+        </motion.div>
+      </section>
+
       {/* We All Live In Section */}
       <section className="py-20 px-4 text-center relative">
         <div className="max-w-6xl mx-auto">
