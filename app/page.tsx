@@ -109,7 +109,7 @@ export default function Page() {
           </motion.div>
           <div className="flex gap-6 items-center">
             <a href="https://x.com/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="Twitter / X">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/X_logo_2023_%28white%29.png" alt="X" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/120px-X_logo_2023.svg.png" alt="X" />
             </a>
             <a href="https://t.me/beingakramraja" target="_blank" rel="noopener noreferrer" className="nav-icon-link" title="Telegram">
               <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" />
